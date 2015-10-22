@@ -1,9 +1,9 @@
 {
   "Gemfile": "6a08ec57f18e97c4ead40a6529d05aa8",
-  "README.md": "2d3ca280c13f4d214e46e8bcf07b635d",
+  "README.md": "229c6017114d05fa5c039cf4cfc2ea01",
   "Rakefile": "3044cde52b8cd8508c8400076a66ef11",
   "examples/init.pp": "208b0baa0eb9986a023936b9df67c059",
-  "manifests/config.pp": "c3972b4fc442028eec018551ced8550c",
+  "manifests/config.pp": "d0cbbf328483fe43e22d292b6256bbe3",
   "manifests/init.pp": "7e1ece9f56c046eb69c1f391d4928099",
   "manifests/install.pp": "d1bf78a4dc12d6756218e2f7062c832c",
   "manifests/service.pp": "0c635a2847697ac8de54328e1732e20b",
