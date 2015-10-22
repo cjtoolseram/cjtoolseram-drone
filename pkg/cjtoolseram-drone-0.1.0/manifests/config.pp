@@ -1,7 +1,7 @@
 # Class: drone::config
 #
 #
-class drone::config ($server_port                  = ":80",
+class drone::config ($server_port                    = ":80",
 	                 $server_ssl_key                 = "",
 	                 $server_ssl_cert                = "",
 	                 $session_secret                 = "",
@@ -38,7 +38,7 @@ class drone::config ($server_port                  = ":80",
 	                 $docker_cert                    = "",
 	                 $docker_key                     = "",
 	                 $worker_nodes                   = ["unix:///var/run/docker.sock",
-                                                      "unix:///var/run/docker.sock"],
+                                                        "unix:///var/run/docker.sock"],
 	                 ){
 
   file { 'drone.toml':
