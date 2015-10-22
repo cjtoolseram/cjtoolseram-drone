@@ -61,13 +61,13 @@ class drone::config ($server_port                  = ":80",
   }
 
   ini_setting { 'server_ssl_key':
-    section => 'server.ssl',
+    section => 'server',
     setting => 'key',
     value   => $server_ssl_key,
   }
 
   ini_setting { 'server_ssl_cert':
-    section => 'server.ssl',
+    section => 'server',
     setting => 'cert',
     value   => $server_ssl_cert,
   }
