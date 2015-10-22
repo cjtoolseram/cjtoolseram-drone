@@ -92,7 +92,7 @@ The configuration attributes and its default value.
   * smtp_pass                      - ""
   * docker_cert                    - ""
   * docker_key                     - ""
-  * worker_nodes
+  * worker_nodes                   - ["unix:///var/run/docker.sock", "unix:///var/run/docker.sock"]
 
 ## Reference
 * https://github.com/drone/drone
