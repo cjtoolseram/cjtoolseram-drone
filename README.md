@@ -32,67 +32,32 @@ include drone
 
 You can find the config is in `/etc/drone/drone.toml` and this is the default value for `config_path`.  
 
-Configuring Drone CI example config:
+Default database setting will use SQLite3.
+
+To have a specific configuration, you will need to copy the config file from [here](https://github.com/drone/drone/blob/master/packaging/root/etc/drone/drone.toml) and put it in your wrapper module files directory `$basemodulepath/your_module/files`.
+
 ~~~
-# Using PostgreSQL example
-class {'drone::config':
-  database-driver     -> "postgres",
-  database-datasource -> "host-127.0.0.1 user-postgres dbname-drone sslmode-disable",
+# Specify different config
+class { 'drone::config':
+  wrapper_module_name => 'your_module',
+  config_file         => 'your_drone.toml',
 }
 
-# Using MySQL example
-class {'drone::config':
-  database-driver     -> "mysql",
-  database-datasource -> "root@tcp(127.0.0.1:3306)/drone",
-}
-
-# Start up drone with different config path
-class {'drone::service':
-	config_path -> '/path/to/new/config',
+# Start service with different config
+class { 'drone::service':
+  config_path => '/etc/drone/your_drone_config.toml',
 }
 ~~~
 
-Note that if there is no database configured, it will use SQLite.
+**Note**: The current default port for Drone CI Server is set to 8080 in this module. You can access Drone by http://your-ip-address:8080 
 
 ## Attributes
-The configuration attributes and its default value.
-  * server_port                    - ":80"
-  * server_ssl_key                 - ""
-  * server_ssl_cert                - ""
-  * session_secret                 - ""
-  * session_expires                - ""
-  * database_driver                - ""
-  * database_datasource            - ""
-  * github_client                  - ""
-  * github_secret                  - ""
-  * github_orgs                    - []
-  * github_open                    - "false"
-  * github_enterprise_client       - ""
-  * github_enterprise_secret       - ""
-  * github_enterprise_api          - ""
-  * github_enterprise_url          - ""
-  * github_enterprise_orgs         - []
-  * github_enterprise_private_mode - "false"
-  * github_enterprise_open         - "false"
-  * bitbucket_client               - ""
-  * bitbucket_secret               - ""
-  * bitbucket_open                 - "false"
-  * gitlab_url                     - ""
-  * gitlab_client                  - ""
-  * gitlab_secret                  - ""
-  * gitlab_skip_verify             - "false"
-  * gitlab_open                    - "false"
-  * gogs_url                       - ""
-  * gogs_secret                    - ""
-  * gogs_open                      - "false"
-  * smtp_host                      - ""
-  * smtp_port                      - ""
-  * smtp_from                      - ""
-  * smtp_user                      - ""
-  * smtp_pass                      - ""
-  * docker_cert                    - ""
-  * docker_key                     - ""
-  * worker_nodes                   - ["unix:///var/run/docker.sock", "unix:///var/run/docker.sock"]
+* `drone::config`
+** wrapper_module_name - your module name that use this module
+** config_file - name of the config file
+
+* `drone::service`
+** config_path - path to your config file in your node
 
 ## Reference
 * https://github.com/drone/drone
@@ -101,4 +66,5 @@ The configuration attributes and its default value.
 
 Only support Redhat or Debian osfamily type
 
+**NOTE:** You will need GLIBC 2.14 to run Drone CI
 

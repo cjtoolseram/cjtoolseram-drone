@@ -2,7 +2,7 @@
 #
 #
 class drone::service ($config_path = '/etc/drone/drone.toml') {
-	exec { "droned --config=${config_path}":
+	exec { "nohup droned --config=${config_path} &":
 		path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
 		#refreshonly => true,
 	}
