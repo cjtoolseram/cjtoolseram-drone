@@ -53,11 +53,11 @@ class { 'drone::service':
 
 ## Attributes
 * `drone::config`
-- wrapper_module_name - your module name that use this module
-- config_file - name of the config file
+** wrapper_module_name - your module name that use this module
+** config_file - name of the config file
 
 * `drone::service`
-- config_path - path to your config file in your node
+** config_path - path to your config file in your node
 
 ## Reference
 * https://github.com/drone/drone

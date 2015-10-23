@@ -1,6 +1,6 @@
 {
   "name": "cjtoolseram-drone",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "author": "cjtoolseram",
   "summary": "Drone CI module",
   "license": "Apache-2.0",
@@ -9,7 +9,7 @@
   "issues_url": "https://github.com/cjtoolseram/cjtoolseram-drone/issues",
   "dependencies": [
     {"name":"maestrodev-wget","version_requirement":">= 1.7.1"}
-  ], 
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -40,4 +40,3 @@
     }
   ]
 }
-
