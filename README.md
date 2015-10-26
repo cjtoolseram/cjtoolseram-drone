@@ -37,15 +37,20 @@ Default database setting will use SQLite3.
 To have a specific configuration, you will need to copy the config file from [here](https://github.com/drone/drone/blob/master/packaging/root/etc/drone/drone.toml) and put it in your wrapper module files directory `$basemodulepath/your_module/files`.
 
 ~~~
-# Specify different config
-class { 'drone::config':
-  wrapper_module_name => 'your_module',
-  config_file         => 'your_drone.toml',
-}
+#dronewrapper directories list
+dronewrapper/
+├── files
+│   └── my_config.toml
+└── manifests
+    └── init.pp
 
-# Start service with different config
-class { 'drone::service':
-  config_path => '/etc/drone/your_drone_config.toml',
+# dronewrapper example init.pp
+class dronewrapper {
+  class { 'drone':
+    wrapper_module_name => 'dronewrapper',
+    config_file => 'my_config.toml',
+    config_path => '/etc/drone/',
+  }
 }
 ~~~
 

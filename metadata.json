@@ -1,6 +1,6 @@
 {
   "name": "cjtoolseram-drone",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "author": "cjtoolseram",
   "summary": "Drone CI module",
   "license": "Apache-2.0",
