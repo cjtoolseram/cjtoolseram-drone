@@ -37,6 +37,9 @@ Default database setting will use SQLite3.
 To have a specific configuration, you will need to copy the config file from [here](https://github.com/drone/drone/blob/master/packaging/root/etc/drone/drone.toml) and put it in your wrapper module files directory `$basemodulepath/your_module/files`.
 
 ~~~
+# Install drone
+class { 'drone::install': }
+
 # Specify different config
 class { 'drone::config':
   wrapper_module_name => 'your_module',
@@ -47,6 +50,9 @@ class { 'drone::config':
 class { 'drone::service':
   config_path => '/etc/drone/your_drone_config.toml',
 }
+
+#Define the ordering
+Class['drone::install'] -> Class['drone::config'] -> Class['drone::service']
 ~~~
 
 **Note**: The current default port for Drone CI Server is set to 8080 in this module. You can access Drone by http://your-ip-address:8080 
