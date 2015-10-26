@@ -1,8 +1,8 @@
 # Class: drone::config
 #
 #
-class drone::config ($wrapper_module_name = 'drone',
-  $config_file = 'drone.toml'){
+class drone::config ($wrapper_module_name,
+  $config_file){
 
   file { 'drone.toml':
     ensure => file,
