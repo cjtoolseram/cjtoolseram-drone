@@ -30,7 +30,7 @@ Easy start with Drone CI
 include drone
 ~~~
 
-You can find the config is in `/etc/drone/drone.toml` and this is the default value for `config_path`.  
+You can find the config is in `/etc/drone/drone.toml`.  
 
 Default database setting will use SQLite3.
 
@@ -48,8 +48,8 @@ dronewrapper/
 class dronewrapper {
   class { 'drone':
     wrapper_module_name => 'dronewrapper',
-    config_file => 'my_config.toml',
-    config_path => '/etc/drone/',
+    config_file         => 'my_config.toml',
+    config_path         => '/etc/drone/',
   }
 }
 ~~~
@@ -57,12 +57,11 @@ class dronewrapper {
 **Note**: The current default port for Drone CI Server is set to 8080 in this module. You can access Drone by http://your-ip-address:8080 
 
 ## Attributes
-* `drone::config`
-  * wrapper_module_name - your module name that use this module
-  * config_file - name of the config file
+Attributes for drone class and its default value.
 
-* `drone::service`
-  * config_path - path to your config file in your node
+* `wrapper_module_name` = 'drone'
+* `config_file`         = 'drone.toml'
+* `config_path`         = '/etc/drone'
 
 ## Reference
 * https://github.com/drone/drone
