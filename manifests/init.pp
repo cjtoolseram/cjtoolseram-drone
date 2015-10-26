@@ -2,7 +2,7 @@
 #
 #
 class drone {
-	class { '::drone::install': } ->
-	class { '::drone::config': } ->
-	class { '::drone::service': }
+  class { '::drone::install': } ->
+  class { '::drone::config': } ->
+  class { '::drone::service': }
 }

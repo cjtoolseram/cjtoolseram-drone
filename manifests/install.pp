@@ -1,13 +1,13 @@
 class drone::install {
   include wget
 
-  $extension = $osfamily ? {
-  	'RedHat' => 'rpm',
-  	'Debian' => 'deb',
-  	default  => fail('OS not supported!'),
+  $extension = $::osfamily ? {
+    'RedHat' => 'rpm',
+    'Debian' => 'deb',
+    default  => fail('OS not supported!'),
   }
 
-  $install_provider = $osfamily ? {
+  $install_provider = $::osfamily ? {
     'RedHat' => 'rpm',
     'Debian' => 'dpkg',
     default  => fail('OS not supported!'),
@@ -26,9 +26,9 @@ class drone::install {
   }
 
   package { 'drone':
-  	ensure   => installed,
+    ensure   => installed,
     provider => $install_provider,
-  	source   => "/tmp/drone.${extension}",
+    source   => "/tmp/drone.${extension}",
     require  => File["/tmp/drone.${extension}"],
   }
 }
