@@ -1,18 +1,18 @@
-# Class: drone::service
-#
-#
 class drone::service {
-  
-  #file {'droned':
-  #  ensure  => file,
-  #  path    => '/etc/init.d/droned',
-  #  mode    => '0755',
-  #  content => template('drone/droned.erb'),
-  #}
-
-  service { 'drone':
-    ensure => running,
+  file { '/etc/drone':
+    ensure => directory,
   }
 
-  #File['droned'] -> Service['droned']
+  file { '/etc/drone/dronerc':
+    ensure => file,
+    content => "\nREMOTE_DRIVER=github\n"
+  }
+
+  docker::run { 'drone':
+    image => 'drone/drone',
+    volumes => ['/var/lib/drone:/var/lib/drone', '/var/run/docker.sock:/var/run/docker.sock'],
+    env_file => '/etc/drone/dronerc',
+    restart_service => true,
+    ports => '80:8000',
+  }
 }
