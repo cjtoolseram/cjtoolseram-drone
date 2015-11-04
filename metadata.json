@@ -1,14 +1,14 @@
 {
   "name": "cjtoolseram-drone",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "cjtoolseram",
   "summary": "Drone CI module",
   "license": "Apache-2.0",
-  "source": "https://github.com/cjtoolseram/cjtoolseram-drone",
-  "project_page": "https://github.com/cjtoolseram/cjtoolseram-drone",
-  "issues_url": "https://github.com/cjtoolseram/cjtoolseram-drone/issues",
+  "source": "https://bitbucket.org/cjtoolseram/cjtoolseram-drone",
+  "project_page": "https://bitbucket.org/cjtoolseram/cjtoolseram-drone",
+  "issues_url": "https://bitbucket.org/cjtoolseram/cjtoolseram-drone/issues",
   "dependencies": [
-    {"name":"maestrodev-wget","version_requirement":">= 1.7.1"}
+    {"name":"puppetlabs-docker_platform","version_requirement":">= 1.1.0"}
   ], 
   "operatingsystem_support": [
     {
@@ -21,7 +21,7 @@
     },
     {
     "operatingsystem": "Debian",
-    "operatingsystemrelease": ["6","7"]
+    "operatingsystemrelease": ["7"]
     },
     {
     "operatingsystem": "Ubuntu",

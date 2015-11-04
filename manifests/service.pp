@@ -1,18 +1,14 @@
-class drone::service {
-  file { '/etc/drone':
-    ensure => directory,
-  }
-
-  file { '/etc/drone/dronerc':
-    ensure => file,
-    content => "\nREMOTE_DRIVER=github\n"
-  }
-
+# Class: name
+#
+#
+class drone::service ( $expose_port,
+                       $links,
+  ){
   docker::run { 'drone':
-    image => 'drone/drone',
-    volumes => ['/var/lib/drone:/var/lib/drone', '/var/run/docker.sock:/var/run/docker.sock'],
-    env_file => '/etc/drone/dronerc',
-    restart_service => true,
-    ports => '80:8000',
+    image           => 'drone/drone',
+    volumes         => ['/var/lib/drone:/var/lib/drone', '/var/run/docker.sock:/var/run/docker.sock'],
+    env_file        => '/etc/drone/dronerc',
+    ports           => "${expose_port}:8000",
+    links            => $links,
   }
 }
