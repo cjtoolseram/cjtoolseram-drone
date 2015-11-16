@@ -25,6 +25,8 @@ This module to allow you to install and configure the drone CI. This module uses
 puppet module install cjtoolseram-drone
 ~~~
 
+You will also need to `include docker` for the managed nodes.
+
 ## Usage  
 Quick and easy start with a wrapper module!
 
