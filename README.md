@@ -32,9 +32,9 @@ Quick and easy start with a wrapper module!
 # dronewrapper example init.pp
 class dronewrapper {
   class { 'drone':
-    image_tag => '0.4',
+    image_tag     => '0.4',
     remote_driver => 'bitbucket',
-    client_id => 'keykeykeykeykeykey',
+    client_id     => 'keykeykeykeykeykey',
     client_secret => 'secretsecretsecretsecretsecret',
   }
 }
