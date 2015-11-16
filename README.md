@@ -4,11 +4,12 @@
 
 1. [Overview](#overview)
 2. [Module Description](#module-description)
-3. [Setup](#setup)
+3. [Install](#install)
 4. [Usage](#usage)
 5. [Attributes](#attributes)
 6. [Reference](#reference)
 7. [Limitations ](#limitations)
+8. [Milestones ](#milestones)
 
 
 ## Overview
@@ -17,58 +18,49 @@ A Drone CI management module
 
 ## Module Description
 
-This module to allow you to install and configure the drone CI
+This module to allow you to install and configure the drone CI. This module uses SQLite3 as it default database and this is a docker container app.
 
-## Setup 
+## Install 
 ~~~
 puppet module install cjtoolseram-drone
 ~~~
 
-## Usage
-Easy start with Drone CI
-~~~
-include drone
-~~~
-
-You can find the config is in `/etc/drone/drone.toml`.  
-
-Default database setting will use SQLite3.
-
-To have a specific configuration, you will need to copy the config file from [here](https://github.com/drone/drone/blob/master/packaging/root/etc/drone/drone.toml) and put it in your wrapper module files directory `$basemodulepath/your_module/files`.
+## Usage  
+Quick and easy start with a wrapper module!
 
 ~~~
-#dronewrapper directories list
-dronewrapper/
-├── files
-│   └── my_config.toml
-└── manifests
-    └── init.pp
-
 # dronewrapper example init.pp
 class dronewrapper {
   class { 'drone':
-    wrapper_module_name => 'dronewrapper',
-    config_file         => 'my_config.toml',
-    config_path         => '/etc/drone/',
+    image_tag => '0.4',
+    remote_driver => 'bitbucket',
+    client_id => 'keykeykeykeykeykey',
+    client_secret => 'secretsecretsecretsecretsecret',
   }
 }
 ~~~
 
-**Note**: The current default port for Drone CI Server is set to 8080 in this module. You can access Drone by http://your-ip-address:8080 
+`remote_driver`, `client_id` and `client_secret` is needed to connect to remote repository.
+
+You can access Drone by http://your-ip-address 
 
 ## Attributes
 Attributes for drone class and its default value.
 
-* `wrapper_module_name` = 'drone'
-* `config_file`         = 'drone.toml'
-* `config_path`         = '/etc/drone'
+* `image_tag`     = 'latest'
+* `remote_driver` = undef
+* `client_id`     = undef
+* `client_secret` = undef
 
 ## Reference
 * https://github.com/drone/drone
 
 ## Limitations
+Only run on any OS that are able to run Docker Engine. This module only runs on SQLite3.
 
-Only support Redhat or Debian osfamily type
+## Milestones
+* Adding MySQL docker image as part of the drone ecosystem. 
+* Investigate to expand to other DB such as CouchDB
 
-**NOTE:** You will need GLIBC 2.14 to run Drone CI
+Please help and open issues if there is any bugs.
 
