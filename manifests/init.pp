@@ -1,17 +1,23 @@
-class drone ($wrapper_module_name = 'drone',
-  $config_file = 'drone.toml',
-  $config_path = '/etc/drone/',
+# Class: name
+#
+#
+class drone ( $client_id = undef,
+              $client_secret = undef,
+              $remote_driver = undef,
+              $image_tag = 'latest',
+              $expose_port = '80',
   ){
-
-  class { 'drone::install': }
+  class { 'drone::install': 
+    image_tag => $image_tag,
+  }
 
   class { 'drone::config':
-    wrapper_module_name => $wrapper_module_name,
-    config_file         => $config_file,
-  }
-  class { 'drone::service':
-    config_path => "${config_path}/${config_file}",
+    remote_driver => $remote_driver,
+    client_id     => $client_id,
+    client_secret => $client_secret,
   }
 
-  Class['drone::install'] -> Class['drone::config'] -> Class['drone::service']
+  class { 'drone::service': 
+    expose_port => $expose_port,
+  }
 }

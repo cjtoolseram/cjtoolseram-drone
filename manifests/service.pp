@@ -1,18 +1,13 @@
-# Class: drone::service
+# Class: name
 #
 #
-class drone::service ($config_path) {
-  
-  file {'droned':
-    ensure  => file,
-    path    => '/etc/init.d/droned',
-    mode    => '0755',
-    content => template('drone/droned.erb'),
+class drone::service ( $expose_port,
+  ){
+  docker::run { 'drone':
+    image           => 'drone/drone',
+    volumes         => ['/var/lib/drone:/var/lib/drone', '/var/run/docker.sock:/var/run/docker.sock'],
+    env_file        => '/etc/drone/dronerc',
+    ports           => "${expose_port}:8000",
+    restart_service => true,
   }
-
-  service { 'droned':
-    ensure => running,
-  }
-
-  File['droned'] -> Service['droned']
 }
