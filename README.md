@@ -50,6 +50,7 @@ You can access Drone by http://your-ip-address
 Attributes for drone class and its default value.
 
 * `image_tag`     = 'latest'
+* `expose_port`   = '80'
 * `remote_driver` = undef
 * `client_id`     = undef
 * `client_secret` = undef
