@@ -25,6 +25,8 @@ This module to allow you to install and configure the drone CI. This module uses
 puppet module install cjtoolseram-drone
 ~~~
 
+You will also need to `include docker` for the managed nodes.
+
 ## Usage  
 Quick and easy start with a wrapper module!
 
@@ -32,9 +34,9 @@ Quick and easy start with a wrapper module!
 # dronewrapper example init.pp
 class dronewrapper {
   class { 'drone':
-    image_tag => '0.4',
+    image_tag     => '0.4',
     remote_driver => 'bitbucket',
-    client_id => 'keykeykeykeykeykey',
+    client_id     => 'keykeykeykeykeykey',
     client_secret => 'secretsecretsecretsecretsecret',
   }
 }
@@ -48,6 +50,7 @@ You can access Drone by http://your-ip-address
 Attributes for drone class and its default value.
 
 * `image_tag`     = 'latest'
+* `expose_port`   = '80'
 * `remote_driver` = undef
 * `client_id`     = undef
 * `client_secret` = undef
