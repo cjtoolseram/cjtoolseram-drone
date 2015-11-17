@@ -12,7 +12,7 @@ class drone::install ( $image_tag ) {
   }
 
   docker::image { 'drone/drone':
-    ensure      => 'present',
-    image_tag   => $image_tag,
+    ensure    => 'present',
+    image_tag => $image_tag,
   }
 }
