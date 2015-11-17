@@ -11,13 +11,10 @@
 7. [Limitations ](#limitations)
 8. [Milestones ](#milestones)
 
-
 ## Overview
-
 A Drone CI management module
 
 ## Module Description
-
 This module to allow you to install and configure the drone CI. This module uses SQLite3 as it default database and this is a docker container app.
 
 ## Install 
