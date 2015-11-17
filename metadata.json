@@ -1,12 +1,13 @@
 {
   "name": "cjtoolseram-drone",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "author": "cjtoolseram",
   "summary": "Drone CI module",
   "license": "Apache-2.0",
   "source": "https://bitbucket.org/cjtoolseram/cjtoolseram-drone",
   "project_page": "https://bitbucket.org/cjtoolseram/cjtoolseram-drone",
   "issues_url": "https://bitbucket.org/cjtoolseram/cjtoolseram-drone/issues",
+  "tags": ["drone", "CI", "docker", "continous integration", "continuous", "integration", "development"],
   "dependencies": [
     {"name":"puppetlabs-docker_platform","version_requirement":">= 1.1.0"}
   ], 
