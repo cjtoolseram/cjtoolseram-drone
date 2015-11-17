@@ -7,7 +7,7 @@ class drone ( $client_id = undef,
               $image_tag = 'latest',
               $expose_port = '80',
   ){
-  class { 'drone::install':
+  class { 'drone::install': 
     image_tag => $image_tag,
   }
 
@@ -17,7 +17,7 @@ class drone ( $client_id = undef,
     client_secret => $client_secret,
   }
 
-  class { 'drone::service':
+  class { 'drone::service': 
     expose_port => $expose_port,
   }
 }
