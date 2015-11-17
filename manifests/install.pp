@@ -8,11 +8,11 @@ class drone::install ( $image_tag ) {
   }
 
   file { '/etc/drone/dronerc':
-    ensure => file,
+    ensure  => file,
   }
 
   docker::image { 'drone/drone':
-    ensure    => 'present',
-    image_tag => $image_tag,
+    ensure      => 'present',
+    image_tag   => $image_tag,
   }
 }
